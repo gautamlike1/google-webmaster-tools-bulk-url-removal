@@ -19,6 +19,7 @@ chrome.runtime.onConnect.addListener(function(port) {
         'removalMethod': removalMethod
       });
     } else if (msg.type === 'nextVictim') {
+
       // find the next victim
       if (executionInProgress) {
         victimUrlArray.shift();
@@ -34,11 +35,17 @@ chrome.runtime.onConnect.addListener(function(port) {
           executionInProgress = false; //done
           removalMethod = null;
           victimUrlArray = null;
+
+          // Artifically trigger a quota exceed event to test
+          // port.postMessage({ //xxx
+          //   'type' : 'triggerQuota'
+          // });
         }
       } else {
-        console.log("no victim to be executed."); //xxx
+        console.log("no victim to be executed.");
       }
     } else if (msg.type === 'reload') {
+      console.log("reloading initUrl: " + initUrl);
       port.postMessage({
         'type' : 'doReload',
         'url' : initUrl
@@ -52,18 +59,3 @@ chrome.runtime.onConnect.addListener(function(port) {
     }
   });
 });
-
-
-//chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
-//if (executionInProgress) {
-//chrome.tabs.getSelected(null,function(tab){
-//myURL=tab.url;
-//console.log(myURL); //xxx
-//});
-////if (changeInfo.url.match(//)) {
-
-////}
-//console.log("should be clicking on some button to close the deal");
-
-//}
-//});

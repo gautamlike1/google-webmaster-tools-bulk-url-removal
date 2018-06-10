@@ -5,15 +5,18 @@
   "description": "",
   "content_scripts" : [
     {
-      "matches" : ["https://www.google.com/webmasters/tools/url-removal*",
-                   "https://www.google.com/webmasters/tools/removals-create-ac*"
-                  ],
+      "matches" : ["https://www.google.com/webmasters/tools/url-removal*"],
         "js" : ["jquery-1.7.1.min.js", "bulk_url_removal.js"]
     },
     {
       "matches" : ["https://www.google.com/webmasters/tools/removals-request*"],
       "js" : ["jquery-1.7.1.min.js", "removals_request.js"]
     },
+    {
+      "matches" : ["http://localhost:8000/test.html",
+                   "https://www.google.com/webmasters/tools/removals-create-ac*"],
+      "js" : ["jquery-1.7.1.min.js", "exceed_quota.js"]
+    }
 
   ],
   "background": {
