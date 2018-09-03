@@ -13,6 +13,3 @@
 5. You should now see a new drop-down with several removal options, along with a "Choose File" button.
 6. Click on the Choose File button.
 7. Select the file you created in step 3.
-
-## Bulk URL fetch
-Some folks were asking for bulk fetch as google. Here's the project page: [https://github.com/noitcudni/google-webmaster-tools-bulk-fetch-as-google](https://github.com/noitcudni/google-webmaster-tools-bulk-fetch-as-google)
